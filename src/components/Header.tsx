@@ -32,7 +32,7 @@ export default async function Header() {
         <img src={urlFor(data.logo).url()} alt="Company Logo" />
       </Link>
       <ul className="flex">
-        {data?.navigation.map((navItem) => (
+        {data?.navigation.map((navItem: any) => (
           <li key={navItem.title} className="mx-4">
             {navItem.title}
           </li>
