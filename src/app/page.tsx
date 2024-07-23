@@ -1,27 +1,13 @@
-import { client, urlFor } from "@/lib/sanity"
-
-async function getLp() {
-  const query = `*[_type == "hero"][0] {
-    _id,
-    title,
-    subtitle,
-    cta {
-      label,
-      url
-    },
-    image{
-      asset->{
-        _id,
-        url
-      }
-    }
-  }
- `
-  return await client.fetch(query)
-}
+import { urlFor } from "@/lib/sanity"
+import { sanityFetch } from "@/lib/sanity.client"
+import { getLpQuery, postQuery } from "@/lib/sanity.query"
 
 export default async function Page() {
-  const lp = await getLp()
+  const lp = await sanityFetch({
+    query: getLpQuery,
+    // You can add multiple tags that matches with your document _id: ['post', 'about', ...]
+    tags: ["hero"],
+  })
 
   return (
     <div className="bg-custom-gradient min-h-screen flex items-center justify-center flex-col">
