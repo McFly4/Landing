@@ -17,11 +17,14 @@ async function getLp() {
     }
   }
  `
-  return await client.fetch(query)
+  return await client.fetch(query, {
+    next: { revalidate: 10 },
+  })
 }
 
 export default async function Page() {
   const lp = await getLp()
+
   return (
     <div className="bg-custom-gradient min-h-screen flex items-center justify-center flex-col">
       <h1 className="text-4xl font-bold text-white">{lp.title}</h1>
