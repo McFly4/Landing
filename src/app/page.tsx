@@ -17,9 +17,7 @@ async function getLp() {
     }
   }
  `
-  return await client.fetch(query, {
-    next: { revalidate: 10 },
-  })
+  return await client.fetch(query)
 }
 
 export default async function Page() {
