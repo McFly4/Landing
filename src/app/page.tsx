@@ -3,7 +3,7 @@ import { sanityFetch } from "@/lib/sanity.client"
 import { getLpQuery, postQuery } from "@/lib/sanity.query"
 
 export default async function Page() {
-  const lp = await sanityFetch({
+  const lp: any = await sanityFetch({
     query: getLpQuery,
     // You can add multiple tags that matches with your document _id: ['post', 'about', ...]
     tags: ["hero"],
