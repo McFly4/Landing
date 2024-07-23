@@ -17,7 +17,7 @@ export async function sanityFetch<QueryResponse>({
   tags,
 }: {
   query: string
-  qParams?: QueryParams
+  qParams?: any
   tags: string[]
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, qParams, {
